@@ -1,0 +1,112 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run Server",
+            "type": "shell",
+            "command": "./build_scripts/run_server.sh",
+            "problemMatcher": [],
+            "presentation": {
+                "group": "groupA",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run Interactive Player 1",
+            "type": "shell",
+            "command": "./build_scripts/run_interactive.sh",
+            "problemMatcher": [],
+            "presentation": {
+                "group": "groupA",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run Interactive Player 2",
+            "type": "shell",
+            "command": "sleep 0.5 && ./build_scripts/run_interactive.sh",
+            "problemMatcher": [],
+            "presentation": {
+                "group": "groupA",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run Automated Player 1",
+            "type": "shell",
+            "command": "./build_scripts/run_automated.sh",
+            "args": [
+                "${input:player1Arg}"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "group": "groupA",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run Automated Player 2",
+            "type": "shell",
+            "command": "./build_scripts/run_automated.sh",
+            "args": [
+                "${input:player2Arg}"
+            ],
+            "problemMatcher": [],
+            "presentation": {
+                "group": "groupA",
+                "panel": "dedicated"
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run Server and Interactive Players",
+            "dependsOn": [
+                "Run Server",
+                "Run Interactive Player 1",
+                "Run Interactive Player 2"
+            ],
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        },
+        {
+            "label": "Run Server and Automated Players",
+            "dependsOn": [
+                "Run Server",
+                "Run Automated Player 1",
+                "Run Automated Player 2"
+            ],
+            "problemMatcher": [],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "player1Arg",
+            "type": "promptString",
+            "description": "Enter argument for Automated Player 1"
+        },
+        {
+            "id": "player2Arg",
+            "type": "promptString",
+            "description": "Enter argument for Automated Player 2"
+        }
+    ]
+}
